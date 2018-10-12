@@ -2,7 +2,7 @@
 ###### Free cross-platform 3D real-time strategy (RTS) game
 
 ### Goals
-The goal is to clone the [Megaglest](https://megaglest.org) as much as possible then extend it.
+The goal is to clone the [Megaglest engine](https://megaglest.org) as much as possible then extend it.
 
 ### Status
 * Terrain - almost finished, included 85 maps and 4 tilesets
