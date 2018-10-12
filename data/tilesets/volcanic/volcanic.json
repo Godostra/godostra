@@ -1,0 +1,11 @@
+{
+"trees": ["banana","cocopalm3","banana1","ferntree3","banana2","cocopalm3","ferntree4","banana1","cocopalm","ferntree3"],
+"dead_trees": ["treasurestones","sarg_holz","sarg_stein","crosses","treasure","treasurestones","treasurestones2"],
+"stones": ["stone2","stone3"],
+"bush": ["plants","plants2","plants","plants2","skullbone3","plants","plants2"],
+"water_object": ["papyrus"],
+"big_tree": ["burned","burned2","burned3"],
+"hanged": ["scorpion","scarab","ibis_statue","vertebra"],
+"statues": ["obelisk","broken_statue","broken_statue2"],
+"mountain": ["vulcano2","vulcano1","vulcano1","vulcano","vulcano2"]
+}

@@ -1,0 +1,11 @@
+{
+"trees": ["tanne","tanne_big","tanne_small","tanne2","birke","palm2","baum2","baum2big"],
+"dead_trees": ["nettles2","nettles1","nettles2","stump2"],
+"stones": ["stone2","stone3"],
+"bush": ["farn"],
+"water_object": ["reed"],
+"big_tree": ["deathtree","deathtree_small"],
+"hanged": ["hanged","impaled"],
+"statues": ["obelisk","statue","broken_statue","technician_statue","battlemage_statue","swordman_statue","broken_statue2"],
+"mountain": ["big_stone","big_stone2","big_stone3"]
+}

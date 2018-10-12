@@ -1,0 +1,11 @@
+{
+"trees": ["tree1","tree2","tree3","tree4","tree5","tree6","tree7","tree8","tree9","tree10"],
+"dead_trees": ["dead_tree"],
+"stones": ["stone1","stone2"],
+"bush": ["bush","bush2","bush3","bush4","bush5"],
+"water_object": ["riverside_object","riverside_object2","riverside_object3","riverside_object4","riverside_object5"],
+"big_tree": ["big_tree1","big_tree2"],
+"hanged": ["hanged","impaled"],
+"statues": ["obelisk","statue","broken_statue","technician_statue","battlemage_statue","swordman_statue","broken_statue2"],
+"mountain": ["big_stone","big_stone2","big_stone3"]
+}
