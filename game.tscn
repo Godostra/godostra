@@ -1,13 +1,12 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://game.gd" type="Script" id=1]
 [ext_resource path="res://misc/camera.gd" type="Script" id=2]
-[ext_resource path="res://data/tilesets/evergreen/textures/3.png" type="Texture" id=3]
-[ext_resource path="res://data/tilesets/evergreen/textures/1.png" type="Texture" id=4]
-[ext_resource path="res://data/tilesets/evergreen/textures/2.png" type="Texture" id=5]
-[ext_resource path="res://data/maps/conflict_heightmap.png" type="Texture" id=6]
-[ext_resource path="res://data/maps/conflict_splat.png" type="Texture" id=7]
-[ext_resource path="res://misc/water/water.tscn" type="PackedScene" id=8]
+[ext_resource path="res://data/tilesets/evergreen/textures/road.png" type="Texture" id=3]
+[ext_resource path="res://data/tilesets/evergreen/textures/grass.png" type="Texture" id=4]
+[ext_resource path="res://data/maps/conflict_heightmap.png" type="Texture" id=5]
+[ext_resource path="res://data/maps/conflict_splat.png" type="Texture" id=6]
+[ext_resource path="res://misc/water/water.tscn" type="PackedScene" id=7]
 
 [sub_resource type="PanoramaSky" id=1]
 
@@ -137,11 +136,11 @@ shader_param/height_range = 5.0
 shader_param/grassres = 64.0
 shader_param/rockres = 64.0
 shader_param/dirtres = 64.0
-shader_param/source = ExtResource( 6 )
+shader_param/source = ExtResource( 5 )
 shader_param/grass = ExtResource( 4 )
-shader_param/rock = ExtResource( 5 )
+shader_param/rock = ExtResource( 4 )
 shader_param/dirt = ExtResource( 3 )
-shader_param/splatmap = ExtResource( 7 )
+shader_param/splatmap = ExtResource( 6 )
 _sections_unfolded = [ "shader", "shader_param" ]
 
 [sub_resource type="PlaneMesh" id=5]
@@ -303,7 +302,7 @@ skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "Transform", "material", "mesh" ]
 
-[node name="water" parent="." instance=ExtResource( 8 )]
+[node name="water" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0 )
 _sections_unfolded = [ "Geometry", "LOD", "Matrix", "Transform", "Visibility", "material", "mesh" ]
 
