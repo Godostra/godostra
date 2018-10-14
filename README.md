@@ -12,3 +12,9 @@ The goal is to clone the [MegaGlest engine](https://megaglest.org) as much as po
 * Multiplayer - not started
 
 ![Godostra Screenshot](https://i.imgur.com/gHjANjH.jpg)
+
+### Contributing
+
+Please see our [contributing
+guidelines](https://github.com/Godostra/godostra/blob/master/CONTRIBUTING.md)
+for important information about submitting patches.
