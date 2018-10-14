@@ -58,7 +58,7 @@ func _ready():
 	
 	# Setup camera
 
-	$camera.margins = map_size
+	# $camera.margins = map_size
 	
 	# Setup tileset
 	
@@ -137,13 +137,15 @@ func _ready():
 							mat.params_use_alpha_scissor = true
 							mat.params_specular_mode = true
 							m.get_mesh().surface_set_material(ss,mat)
-				z = s/5-0.5
+				
+				z = s*0.16
 				var unit_new = unit.instance()
 				unit_new.translate(Vector3(x*tile_size-map_area.x/2,z,y*tile_size-map_area.y/2))
 				unit_new.set_scale(Vector3(obj_scale,obj_scale,obj_scale))
 				unit_new.set_rotation_degrees(Vector3(0,randi()%359,0))
 				unit_new.add_child(obj)
 				unit_new.unit_type = o
+				unit_new.z = z
 				
 				if [1,11,12].find(o) != -1:
 					unit_new.selectable = true
@@ -152,7 +154,7 @@ func _ready():
 			
 			i += 1
 	
-	# Setup initial units
+	# Setup initial units TMP
 	for player in map['players']:
 		var player_pos = map['players'][str(player)]
 		var obj = pyramid.instance()
