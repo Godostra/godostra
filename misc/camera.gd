@@ -40,4 +40,3 @@ func update_camera():
 
 func window_resized():
 	win_size = OS.get_window_size()
-	print(win_size)

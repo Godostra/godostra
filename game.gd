@@ -4,6 +4,7 @@ const gold = preload("res://data/techtrees/megapack/resources/gold.dae")
 const stone = preload("res://data/techtrees/megapack/resources/stone.dae")
 
 const pyramid = preload("res://data/techtrees/megapack/factions/egypt/pyramid/pyramid.dae")
+const unit = preload("res://unit.tscn")
 
 var file = File.new()
 var map
@@ -118,8 +119,9 @@ func _ready():
 			if o > 0 and o != 10:
 				s = float(map['heights'][i])
 				var obj
+				var rand
 				if o <= 10:
-					var rand = randi() % tileset_load[o-1].size()
+					rand = randi() % tileset_load[o-1].size()
 					obj = tileset_load[o-1][rand].instance()
 				elif o == 11:
 					obj = gold.instance()
@@ -133,12 +135,20 @@ func _ready():
 							#mat.flags_transparent = true
 							mat.flags_unshaded = true
 							mat.params_use_alpha_scissor = true
+							mat.params_specular_mode = true
 							m.get_mesh().surface_set_material(ss,mat)
 				z = s/5-0.5
-				obj.translate(Vector3(x*tile_size-map_area.x/2,z,y*tile_size-map_area.y/2))
-				obj.set_scale(Vector3(obj_scale,obj_scale,obj_scale))
-				obj.set_rotation_degrees(Vector3(0,randi()%359,0))
-				$objects.add_child(obj)
+				var unit_new = unit.instance()
+				unit_new.translate(Vector3(x*tile_size-map_area.x/2,z,y*tile_size-map_area.y/2))
+				unit_new.set_scale(Vector3(obj_scale,obj_scale,obj_scale))
+				unit_new.set_rotation_degrees(Vector3(0,randi()%359,0))
+				unit_new.add_child(obj)
+				unit_new.unit_type = o
+				
+				if [1,11,12].find(o) != -1:
+					unit_new.selectable = true
+				
+				$objects.add_child(unit_new)
 			
 			i += 1
 	
@@ -148,10 +158,21 @@ func _ready():
 		var obj = pyramid.instance()
 		var x = int(player_pos[0])
 		var y = int(player_pos[1])
-		obj.translate(Vector3(x*tile_size-map_area.x/2,1,y*tile_size-map_area.y/2))
-		obj.set_rotation_degrees(Vector3(0,randi()%359,0))
-		obj.set_scale(Vector3(obj_scale,obj_scale,obj_scale))
-		$objects.add_child(obj)
+		var unit_new = unit.instance()
+		unit_new.translate(Vector3(x*tile_size-map_area.x/2,z,y*tile_size-map_area.y/2))
+		unit_new.set_scale(Vector3(obj_scale,obj_scale,obj_scale))
+		unit_new.set_rotation_degrees(Vector3(0,randi()%359,0))
+		unit_new.unit_type = 0
+		unit_new.add_child(obj)
+		unit_new.selectable = true
+		$objects.add_child(unit_new)
+		add_child(obj)
 
 func _on_main_menu_button_down():
 	get_tree().change_scene("res://main_menu.tscn")
+
+
+func clear_selection():
+	for obj in $objects.get_children():
+		if obj.selectable:
+			obj.get_node("selection").set_visible(false)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://fonts/mops.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://main_menu.gd" type="Script" id=2]
 [ext_resource path="res://scripts/map_preview.gd" type="Script" id=3]
+[ext_resource path="res://data/techtrees/megapack/factions/egypt/pyramid/pyramid.dae" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -345,6 +346,10 @@ group = null
 text = "Start"
 flat = false
 align = 1
+
+[node name="Scene Root" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55453, 3.02107, 4.49631 )
+_sections_unfolded = [ "Matrix" ]
 
 [connection signal="item_selected" from="panel/TabContainer/Game/opt_map" to="." method="_on_opt_map_item_selected"]
 [connection signal="item_selected" from="panel/TabContainer/Game/opt_tileset" to="." method="_on_opt_tileset_item_selected"]
