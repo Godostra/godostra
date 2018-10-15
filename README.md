@@ -1,8 +1,12 @@
 # Godostra
-###### Free cross-platform 3D real-time strategy (RTS) game
+###### Free cross-platform 3D real-time strategy (RTS) game using [godot 3.x](http://docs.godotengine.org/en/3.0/)
 
 ### Goals
-The goal is to clone the [MegaGlest engine](https://megaglest.org) as much as possible then extend it.
+
+* clone the [MegaGlest engine](https://megaglest.org) using completely different source code
+* implement many new features
+* offer contribution opportunities to other developers
+* create a game that's easy to mod
 
 ### Status
 * Terrain - almost finished, included 85 maps and 4 tilesets
@@ -14,6 +18,11 @@ The goal is to clone the [MegaGlest engine](https://megaglest.org) as much as po
 ![Godostra Screenshot](https://i.imgur.com/gHjANjH.jpg)
 
 ### Contributing
+
+We are currently creating Godostra using the development version of the godot engine.
+See their documentation for all the [necessary information to build and run the latest
+version](http://docs.godotengine.org/en/3.0/development/compiling/index.html)
+of the godot engine.
 
 Please see our [contributing
 guidelines](https://github.com/Godostra/godostra/blob/master/CONTRIBUTING.md)
