@@ -17,6 +17,11 @@
 
 ![Godostra Screenshot](https://i.imgur.com/gHjANjH.jpg)
 
+### Contact
+If you want to stay in touch, feel free to join our [Discord Server](https://discordapp.com/invite/kNyvzzq)
+
+
+
 ### Contributing
 
 We are currently creating Godostra using the development version of the godot engine.
