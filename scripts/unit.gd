@@ -1,38 +1,71 @@
 extends Spatial
 
-var unit_type = 0
-var selectable = false
+# TODO Seperate UNIT and TILESET in different files
+
+onready var GAME = get_node("/root/game")
+
+var player_id = 0
+var unit_name = ""
+var unit_dir = ""
+var size = 0
+var height = 0
 var aab
-var z = 0
+var def
+
+var hp = 0
 
 func _ready():
-	aab = get_node("Scene Root/Empty").get_children()[0].get_aabb()
+	#aab = get_node("Scene Root/Empty").get_children()[0].get_aabb()
+	unit_dir = "res://data/techtrees/"+global.techtree_name+"/factions/"+global.faction_name+"/"+unit_name
+	
+	var file = File.new()
+	file.open(unit_dir+"/"+unit_name+".json", File.READ)
+	def = parse_json(file.get_as_text())
+	file.close()
+	def = def["unit"]["parameters"]
+	
+	size = def["size"]["value"]
+	height = def["height"]["value"]
+	hp = def["max-hp"]["value"]
+	
+	if player_id == global.player_id:
+		for res in def["resources-stored"]["resource"]:
+			GAME.get_node("hud/resources/res_"+res["name"]).res_max += res['amount']
+		
 
-	if selectable and unit_type != 1:
-		var sel = $selection.get_mesh().duplicate(true)
-		var mat = SpatialMaterial.new()
-		var tex = ImageTexture.new()
-		tex.load("res://misc/water_simple.png")
-		mat.albedo_texture = tex
-		mat.flags_transparent = true
-		sel.set_material(mat)
-		$selection.set_mesh(sel)
-		$selection.translate(Vector3(0,abs(aab.position.z/2.0),0)-Vector3(0,2,0))
-		$selection.get_mesh().set_size(Vector3(aab.size.x,aab.size.z,aab.size.y))
-		
-		var col = $collision.get_shape().duplicate(true)
-		col.set_extents(Vector3(aab.size.x/2,aab.size.z/2,aab.size.y/2))
-		$collision.translate(Vector3(0,abs(aab.position.z/2),0)-Vector3(0,2,0))
-		$collision.set_shape(col)
-		
-		
-	elif unit_type != 1:
-		$selection.free()
-		$collision.free()
+	var sel = $selection.get_mesh().duplicate(true)
+	var mat = SpatialMaterial.new()
+	mat.albedo_color = Color(0,1,0)
+	sel.set_material(mat)
+	
+	$selection.get_mesh().set_top_radius(size/2+1)
+	$selection.set_mesh(sel)
+	
+	var envelope = Vector3(size-1.5,height,size-1.5)
+	var envelope_t = Vector3(0,height/2-0.5,0)
+	
+	var col = $collision.get_shape().duplicate(true)
+	col.set_extents(envelope/Vector3(2,2,2))
+	$collision.translate(envelope_t)
+	$collision.set_shape(col)
+	
+	$cube.translate(envelope_t)
+	$cube.get_mesh().set_size(envelope)
+
 
 func _input_event(camera, event, pos, normal, shape):
 	if event is InputEventMouseButton:
-		print(z)
-		if selectable and event.button_index == 1 and event.is_pressed():
+		if event.button_index == 1 and event.is_pressed():
 			get_node("/root/game").clear_selection()
 			$selection.set_visible(true)
+			var tex = ImageTexture.new()
+			tex.load(unit_dir+"/images/"+unit_name+".bmp")
+			GAME.get_node("hud/prop/icon").set_texture(tex)
+			var info = "HP: "+str(hp)+"/"+str(def["max-hp"]["value"])+"\n"
+			info += "Armor: "+str(def["armor"]["value"])+" ["+def["armor-type"]["value"]+"]\n"
+			info += "Sight: "+str(def["sight"]["value"])+"\n"
+			
+			for res in def["resources-stored"]["resource"]:
+				info += "Store: "+str(res['amount'])+" "+res["name"]+"\n"
+
+			GAME.get_node("hud/prop/info").set_text(info)

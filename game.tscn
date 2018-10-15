@@ -1,16 +1,31 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://game.gd" type="Script" id=1]
 [ext_resource path="res://misc/camera_control.gd" type="Script" id=2]
-[ext_resource path="res://data/tilesets/desert/textures/road.png" type="Texture" id=3]
-[ext_resource path="res://data/tilesets/desert/textures/grass.png" type="Texture" id=4]
-[ext_resource path="res://data/tilesets/desert/textures/dirt.png" type="Texture" id=5]
-[ext_resource path="res://data/maps/conflict_heightmap.png" type="Texture" id=6]
-[ext_resource path="res://data/maps/conflict_splat.png" type="Texture" id=7]
-[ext_resource path="res://misc/water/water.tscn" type="PackedScene" id=8]
-[ext_resource path="res://data/tilesets/evergreen/models/baum2/baum2.dae" type="PackedScene" id=9]
+[ext_resource path="res://fonts/mops.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://data/tilesets/desert/textures/road.png" type="Texture" id=4]
+[ext_resource path="res://data/tilesets/desert/textures/grass.png" type="Texture" id=5]
+[ext_resource path="res://data/tilesets/desert/textures/dirt.png" type="Texture" id=6]
+[ext_resource path="res://data/maps/conflict_heightmap.png" type="Texture" id=7]
+[ext_resource path="res://data/maps/conflict_splat.png" type="Texture" id=8]
+[ext_resource path="res://misc/water/water.tscn" type="PackedScene" id=9]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="DynamicFont" id=1]
+
+size = 22
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[sub_resource type="Theme" id=2]
+
+default_font = SubResource( 1 )
+_sections_unfolded = [ "default_font" ]
+
+[sub_resource type="Shader" id=3]
 
 code = "shader_type spatial;
 render_mode unshaded;
@@ -44,31 +59,31 @@ void fragment(){
  ALBEDO = result;
  }"
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="ShaderMaterial" id=4]
 
 render_priority = 0
-shader = SubResource( 1 )
+shader = SubResource( 3 )
 shader_param/height_range = 5.0
 shader_param/grassres = 6.0
 shader_param/rockres = 32.0
 shader_param/dirtres = 32.0
-shader_param/source = ExtResource( 6 )
-shader_param/grass = ExtResource( 4 )
-shader_param/rock = ExtResource( 5 )
-shader_param/dirt = ExtResource( 3 )
-shader_param/splatmap = ExtResource( 7 )
+shader_param/source = ExtResource( 7 )
+shader_param/grass = ExtResource( 5 )
+shader_param/rock = ExtResource( 6 )
+shader_param/dirt = ExtResource( 4 )
+shader_param/splatmap = ExtResource( 8 )
 _sections_unfolded = [ "shader", "shader_param" ]
 
-[sub_resource type="PlaneMesh" id=3]
+[sub_resource type="PlaneMesh" id=5]
 
-material = SubResource( 2 )
+material = SubResource( 4 )
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
 size = Vector2( 64, 64 )
 subdivide_width = 64
 subdivide_depth = 64
 
-[sub_resource type="PlaneMesh" id=4]
+[sub_resource type="PlaneMesh" id=6]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
@@ -76,7 +91,7 @@ size = Vector2( 64, 64 )
 subdivide_width = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=5]
+[sub_resource type="SpatialMaterial" id=7]
 
 render_priority = 0
 flags_transparent = false
@@ -184,6 +199,7 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="Control" type="Control" parent="hud"]
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -221,7 +237,66 @@ text = "<"
 flat = false
 align = 1
 
-[node name="objects" type="Spatial" parent="."]
+[node name="resources" type="Control" parent="hud"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = SubResource( 2 )
+_sections_unfolded = [ "Theme", "theme" ]
+
+[node name="prop" type="Control" parent="hud"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 5.0
+margin_top = 147.0
+margin_right = 45.0
+margin_bottom = 187.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = SubResource( 2 )
+_sections_unfolded = [ "Theme", "theme" ]
+
+[node name="icon" type="Sprite" parent="hud/prop"]
+position = Vector2( 32, 32 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="info" type="Label" parent="hud/prop"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 5.0
+margin_top = 86.0
+margin_right = 224.0
+margin_bottom = 370.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="units" type="Spatial" parent="."]
+
+[node name="tileset" type="Spatial" parent="."]
 
 [node name="terrain" type="MeshInstance" parent="."]
 layers = 1
@@ -233,12 +308,12 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 3 )
+mesh = SubResource( 5 )
 skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "Transform", "material", "mesh" ]
 
-[node name="water" parent="." instance=ExtResource( 8 )]
+[node name="water" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0 )
 _sections_unfolded = [ "Geometry", "LOD", "Matrix", "Transform", "Visibility", "material", "mesh" ]
 
@@ -254,19 +329,9 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 4 )
+mesh = SubResource( 6 )
 skeleton = NodePath("..")
-material/0 = SubResource( 5 )
+material/0 = SubResource( 7 )
 _sections_unfolded = [ "Transform", "material", "mesh" ]
-
-[node name="Scene Root" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.69, 12.3499, -2.934 )
-visible = false
-_sections_unfolded = [ "Transform" ]
-
-[node name="Scene Root2" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.806, 11.881, -2.925 )
-visible = false
-_sections_unfolded = [ "Transform" ]
 
 [connection signal="button_down" from="hud/Control/main_menu" to="." method="_on_main_menu_button_down"]

@@ -1,0 +1,234 @@
+{
+	"tech-tree": {
+		"description": {
+			"value": "magitech tech tree"
+		},
+		"resources": {
+			"gold": {
+				"default-amount": "2000"	
+			},
+			"stone": {
+				"default-amount": "1500"	
+			},
+			"food": {
+				"type": "consumable",
+				"default-amount": "0",
+				"interval": "30"
+			},
+			"energry": {
+				"type": "static",
+				"default-amount": "0"
+			},
+			"housing": {
+				"type": "static",
+				"default-amount": "0"
+			},
+			"wood": {
+				"type": "tileset",
+				"default-amount": "300",
+				"tileset-object": "1"
+			}
+		},
+		"attack-types": {
+			"attack-type": [
+				{
+					"name": "slashing"
+				},
+				{
+					"name": "piercing"
+				},
+				{
+					"name": "impact"
+				},
+				{
+					"name": "energy"
+				},
+				{
+					"name": "sword"
+				},
+				{
+					"name": "arrow"
+				},
+				{
+					"name": "magic"
+				},
+				{
+					"name": "beat"
+				}
+			]
+		},
+		"armor-types": {
+			"armor-type": [
+				{
+					"name": "organic"
+				},
+				{
+					"name": "leather"
+				},
+				{
+					"name": "wood"
+				},
+				{
+					"name": "metal"
+				},
+				{
+					"name": "stone"
+				}
+			]
+		},
+		"damage-multipliers": {
+			"damage-multiplier": [
+				{
+					"attack": "arrow",
+					"armor": "organic",
+					"value": "1.25"
+				},
+				{
+					"attack": "arrow",
+					"armor": "leather",
+					"value": "1.25"
+				},
+				{
+					"attack": "arrow",
+					"armor": "wood",
+					"value": "0.75"
+				},
+				{
+					"attack": "arrow",
+					"armor": "metal",
+					"value": "0.75"
+				},
+				{
+					"attack": "arrow",
+					"armor": "stone",
+					"value": "0.5"
+				},
+				{
+					"attack": "sword",
+					"armor": "organic",
+					"value": "1.25"
+				},
+				{
+					"attack": "sword",
+					"armor": "wood",
+					"value": "0.75"
+				},
+				{
+					"attack": "sword",
+					"armor": "stone",
+					"value": "0.5"
+				},
+				{
+					"attack": "beat",
+					"armor": "organic",
+					"value": "1.25"
+				},
+				{
+					"attack": "beat",
+					"armor": "wood",
+					"value": "0.75"
+				},
+				{
+					"attack": "beat",
+					"armor": "stone",
+					"value": "0.5"
+				},
+				{
+					"attack": "magic",
+					"armor": "organic",
+					"value": "1.25"
+				},
+				{
+					"attack": "magic",
+					"armor": "wood",
+					"value": "0.75"
+				},
+				{
+					"attack": "magic",
+					"armor": "stone",
+					"value": "0.5"
+				},
+				{
+					"attack": "piercing",
+					"armor": "organic",
+					"value": "1.25"
+				},
+				{
+					"attack": "piercing",
+					"armor": "leather",
+					"value": "1.25"
+				},
+				{
+					"attack": "piercing",
+					"armor": "wood",
+					"value": "0.75"
+				},
+				{
+					"attack": "piercing",
+					"armor": "metal",
+					"value": "0.75"
+				},
+				{
+					"attack": "piercing",
+					"armor": "stone",
+					"value": "0.5"
+				},
+				{
+					"attack": "impact",
+					"armor": "organic",
+					"value": "0.75"
+				},
+				{
+					"attack": "impact",
+					"armor": "leather",
+					"value": "0.75"
+				},
+				{
+					"attack": "impact",
+					"armor": "metal",
+					"value": "1.5"
+				},
+				{
+					"attack": "impact",
+					"armor": "wood",
+					"value": "1.5"
+				},
+				{
+					"attack": "impact",
+					"armor": "stone",
+					"value": "1.5"
+				},
+				{
+					"attack": "slashing",
+					"armor": "organic",
+					"value": "1.25"
+				},
+				{
+					"attack": "slashing",
+					"armor": "wood",
+					"value": "0.75"
+				},
+				{
+					"attack": "slashing",
+					"armor": "stone",
+					"value": "0.5"
+				},
+				{
+					"attack": "energy",
+					"armor": "organic",
+					"value": "1.25"
+				},
+				{
+					"attack": "energy",
+					"armor": "wood",
+					"value": "0.75"
+				},
+				{
+					"attack": "energy",
+					"armor": "stone",
+					"value": "0.5"
+				}
+			]
+		}
+	}
+}

@@ -46,3 +46,11 @@ func opt_add_items(node,items,selected=""):
 		node.add_item(item)
 		i += 1
 	node.select(sel_i)
+	
+# Get json
+func read_json(file_path):
+	var file = File.new()
+	file.open(file_path, File.READ)
+	var json = parse_json(file.get_as_text())
+	file.close()
+	return json

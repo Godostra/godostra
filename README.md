@@ -15,7 +15,7 @@
 * AI - not started
 * Multiplayer - not started
 
-![Godostra Screenshot](https://i.imgur.com/gHjANjH.jpg)
+![Godostra Screenshot](https://i.imgur.com/wcOzfQR.jpg)
 
 ### Contact
 If you want to stay in touch, feel free to join our [Discord Server](https://discordapp.com/invite/kNyvzzq)

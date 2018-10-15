@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/loading.gd" type="Script" id=1]
+
+[node name="loading" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="sprite" type="Sprite" parent="."]
+offset = Vector2( 640, 512 )
+_sections_unfolded = [ "Offset" ]
+
+[node name="timer" type="Timer" parent="."]
+process_mode = 1
+wait_time = 0.1
+one_shot = true
+autostart = false
+
+[connection signal="texture_changed" from="sprite" to="." method="_on_sprite_texture_changed"]
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

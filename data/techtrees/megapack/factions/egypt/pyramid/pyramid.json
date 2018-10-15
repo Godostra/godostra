@@ -1,0 +1,288 @@
+{
+	"unit": {
+		"parameters": {
+			"size": {
+				"value": 7
+			},
+			"height": {
+				"value": 5
+			},
+			"max-hp": {
+				"value": 9000,
+				"regeneration": 0
+			},
+			"max-ep": {
+				"value": 0
+			},
+			"armor": {
+				"value": 0
+			},
+			"armor-type": {
+				"value": "stone"
+			},
+			"sight": {
+				"value": 15
+			},
+			"time": {
+				"value": 300
+			},
+			"multi-selection": {
+				"value": "true"
+			},
+			"uniform-selection": {
+				"value": "true"
+			},
+			"cellmap": {
+				"value": "true",
+				"row": [
+					{
+						"value": "0100010"
+					},
+					{
+						"value": "1111111"
+					},
+					{
+						"value": "0111110"
+					},
+					{
+						"value": "0110110"
+					},
+					{
+						"value": "0110110"
+					},
+					{
+						"value": "1110111"
+					},
+					{
+						"value": "0110110"
+					}
+				]
+			},
+			"levels": {},
+			"fields": {
+				"field": {
+					"value": "land"
+				}
+			},
+			"properties": {
+				"property": {
+					"value": "burnable"
+				}
+			},
+			"light": {
+				"enabled": "true",
+				"red": "0.8",
+				"green": "0.8",
+				"blue": "0.5"
+			},
+			"unit-requirements": {},
+			"upgrade-requirements": {},
+			"resource-requirements": {
+				"resource": [
+					{
+						"name": "gold",
+						"amount": "100"
+					},
+					{
+						"name": "stone",
+						"amount": "300"
+					},
+					{
+						"name": "wood",
+						"amount": "150"
+					}
+				]
+			},
+			"resources-stored": {
+				"resource": [
+					{
+						"name": "gold",
+						"amount": 2000
+					},
+					{
+						"name": "wood",
+						"amount": 1200
+					},
+					{
+						"name": "stone",
+						"amount": 1500
+					},
+					{
+						"name": "food",
+						"amount": 150
+					}
+				]
+			},
+			"image": {
+				"path": "images/pyramid.bmp"
+			},
+			"image-cancel": {
+				"path": "../spearman/images/tech_cancel.bmp"
+			},
+			"meeting-point": {
+				"value": "true",
+				"image-path": "../desert_camp/images/meeting_point.bmp"
+			},
+			"selection-sounds": {
+				"enabled": "true",
+				"sound": {
+					"path": "$COMMONDATAPATH/sounds/tech_click.wav"
+				}
+			},
+			"command-sounds": {
+				"enabled": "true",
+				"sound": {
+					"path": "$COMMONDATAPATH/sounds/tech_click.wav"
+				}
+			}
+		},
+		"skills": {
+			"skill": [
+				{
+					"type": {
+						"value": "stop"
+					},
+					"name": {
+						"value": "stop_skill"
+					},
+					"ep-cost": {
+						"value": "0"
+					},
+					"speed": {
+						"value": "300"
+					},
+					"anim-speed": {
+						"value": "100"
+					},
+					"animation": {
+						"path": "models/pyramid.g3d"
+					},
+					"sound": {
+						"enabled": "false"
+					}
+				},
+				{
+					"type": {
+						"value": "be_built"
+					},
+					"name": {
+						"value": "be_built_skill"
+					},
+					"ep-cost": {
+						"value": "0"
+					},
+					"speed": {
+						"value": "300"
+					},
+					"anim-speed": {
+						"value": "300"
+					},
+					"animation": {
+						"path": "models/pyramid_construction.g3d"
+					},
+					"sound": {
+						"enabled": "false"
+					}
+				},
+				{
+					"type": {
+						"value": "produce"
+					},
+					"name": {
+						"value": "produce_skill"
+					},
+					"ep-cost": {
+						"value": "0"
+					},
+					"speed": {
+						"value": "300"
+					},
+					"anim-speed": {
+						"value": "300"
+					},
+					"animation": {
+						"path": "models/pyramid.g3d"
+					},
+					"sound": {
+						"enabled": "false"
+					}
+				},
+				{
+					"type": {
+						"value": "die"
+					},
+					"name": {
+						"value": "die_skill"
+					},
+					"ep-cost": {
+						"value": "0"
+					},
+					"speed": {
+						"value": "300"
+					},
+					"anim-speed": {
+						"value": "300"
+					},
+					"animation": {
+						"path": "destruction_models/pyramid_destruction.g3d"
+					},
+					"sound": {
+						"enabled": "true",
+						"start-time": "0",
+						"sound-file": {
+							"path": "$COMMONDATAPATH/sounds/tech_building_fall2.wav"
+						}
+					},
+					"shake": {
+						"enabled": "true",
+						"intensity": "1000",
+						"duration": "120",
+						"start-time": "0.0",
+						"self": {
+							"enabled": "true",
+							"visible": "false",
+							"in-camera-view": "false",
+							"camera-distance-affected": "false"
+						},
+						"team": {
+							"enabled": "true",
+							"visible": "false",
+							"in-camera-view": "false",
+							"camera-distance-affected": "false"
+						},
+						"enemy": {
+							"enabled": "true",
+							"visible": "true",
+							"in-camera-view": "false",
+							"camera-distance-affected": "true"
+						}
+					},
+					"fade": {
+						"value": "false"
+					}
+				}
+			]
+		},
+		"commands": {
+			"command": {
+				"type": {
+					"value": "produce"
+				},
+				"name": {
+					"value": "produce_slave"
+				},
+				"image": {
+					"path": "../slave/images/worker.bmp"
+				},
+				"unit-requirements": {},
+				"upgrade-requirements": {},
+				"produce-skill": {
+					"value": "produce_skill"
+				},
+				"produced-unit": {
+					"name": "slave"
+				}
+			}
+		}
+	}
+}

@@ -27,7 +27,7 @@ global="*res://scripts/global.gd"
 [display]
 
 window/size/width=1280
-window/size/height=720
+window/size/height=800
 mouse_cursor/custom_image="res://misc/cursor.png"
 
 [rendering]

@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://fonts/mops.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://main_menu.gd" type="Script" id=2]
 [ext_resource path="res://scripts/map_preview.gd" type="Script" id=3]
-[ext_resource path="res://data/techtrees/megapack/factions/egypt/pyramid/pyramid.dae" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -70,6 +69,7 @@ drag_to_rearrange_enabled = false
 _sections_unfolded = [ "custom_fonts", "custom_fonts/font" ]
 
 [node name="Game" type="Container" parent="panel/TabContainer"]
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -194,7 +194,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "Techtree"
+text = "Subgame"
 align = 2
 percent_visible = 1.0
 lines_skipped = 0
@@ -226,9 +226,57 @@ align = 0
 items = [  ]
 selected = -1
 
+[node name="lbl_faction" type="Label" parent="panel/TabContainer/Game"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 25.0
+margin_top = 172.0
+margin_right = 102.0
+margin_bottom = 197.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Faction"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="opt_faction" type="OptionButton" parent="panel/TabContainer/Game"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 111.0
+margin_top = 169.0
+margin_right = 307.0
+margin_bottom = 200.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+action_mode = 0
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 0
+items = [  ]
+selected = -1
+
 [node name="map_preview" type="Node2D" parent="panel/TabContainer/Game"]
-position = Vector2( 342.827, 40.436 )
+position = Vector2( 330, 30 )
 script = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Options" type="Container" parent="panel/TabContainer"]
 visible = false
@@ -347,11 +395,9 @@ text = "Start"
 flat = false
 align = 1
 
-[node name="Scene Root" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55453, 3.02107, 4.49631 )
-_sections_unfolded = [ "Matrix" ]
-
 [connection signal="item_selected" from="panel/TabContainer/Game/opt_map" to="." method="_on_opt_map_item_selected"]
 [connection signal="item_selected" from="panel/TabContainer/Game/opt_tileset" to="." method="_on_opt_tileset_item_selected"]
+[connection signal="item_selected" from="panel/TabContainer/Game/opt_techtree" to="." method="_on_opt_techtree_item_selected"]
+[connection signal="item_selected" from="panel/TabContainer/Game/opt_faction" to="." method="_on_opt_faction_item_selected"]
 [connection signal="button_down" from="panel/TabContainer/Developer/save" to="." method="_on_save_button_down"]
 [connection signal="button_down" from="panel/start" to="." method="_on_start_button_down"]

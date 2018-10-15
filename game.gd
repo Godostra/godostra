@@ -1,12 +1,15 @@
 extends Spatial
 
-const gold = preload("res://data/techtrees/megapack/resources/gold.dae")
-const stone = preload("res://data/techtrees/megapack/resources/stone.dae")
+var GSC = preload("res://scripts/gsc.gd")
+
+const res_p = preload("res://misc/resources/resource.tscn")
+
+const gold = preload("res://data/techtrees/megapack/resources/gold/models/gold.dae")
+const stone = preload("res://data/techtrees/megapack/resources/stone/models/stone.dae")
 
 const pyramid = preload("res://data/techtrees/megapack/factions/egypt/pyramid/pyramid.dae")
 const unit = preload("res://unit.tscn")
 
-var file = File.new()
 var map
 var map_size = Vector2(0,0)
 var map_area = Vector2(0,0)
@@ -43,14 +46,15 @@ Surfaces:
 var tileset
 var tileset_load = []
 
+var faction
+var techtree
+
 func _ready():
 	randomize()
 	
 	# Setup map data
 	
-	file.open("res://data/maps/"+global.map_name+".json", File.READ)
-	map = parse_json(file.get_as_text())
-	file.close()
+	map = GSC.read_json("res://data/maps/"+global.map_name+".json")
 	
 	map_size = Vector2(int(map['width']),int(map['height']))
 	map_area = map_size * Vector2(tile_size,tile_size)
@@ -61,10 +65,8 @@ func _ready():
 	# $camera.margins = map_size
 	
 	# Setup tileset
-	
-	file.open("res://data/tilesets/"+global.tileset_name+"/"+global.tileset_name+".json", File.READ)
-	tileset = parse_json(file.get_as_text())
-	file.close()
+
+	tileset = GSC.read_json("res://data/tilesets/"+global.tileset_name+"/"+global.tileset_name+".json")
 	
 	var i = 0
 	for tg in tileset:
@@ -105,13 +107,33 @@ func _ready():
 	$terrain.get_mesh().get_material().set_shader_param("rock",rock)
 	$terrain.get_mesh().get_material().set_shader_param("dirt",dirt)
 	
+
+	# Setup faction and resources
+	
+	techtree = GSC.read_json("res://data/techtrees/"+global.techtree_name+"/"+global.techtree_name+".json")
+	faction = GSC.read_json("res://data/techtrees/"+global.techtree_name+"/factions/"+global.faction_name+"/"+global.faction_name+".json")
+
+	
+	i = 0
+	for res in faction["faction"]["starting-resources"]["resource"]:
+		var res_new = res_p.instance()
+		var res_tex = ImageTexture.new()
+		res_tex.load("res://data/techtrees/"+global.techtree_name+"/resources/"+res["name"]+"/images/"+res["name"]+".bmp")
+		
+		res_new.set_name("res_"+res["name"])
+		res_new.get_node("texture").set_texture(res_tex)
+		res_new.set_position(Vector2(i*150+200,32))
+		res_new.res_amount += int(res["amount"])
+		$hud/resources.add_child(res_new)
+		i += 1
+
+	
+	# Setup objects
+	
 	i = 0
 	var z = 0
 	var s = 0
 	var o = 0
-
-	
-	# Setup objects
 	
 	for y in range(map_size.y):
 		for x in range(map_size.x):
@@ -139,18 +161,11 @@ func _ready():
 							m.get_mesh().surface_set_material(ss,mat)
 				
 				z = s*0.16
-				var unit_new = unit.instance()
-				unit_new.translate(Vector3(x*tile_size-map_area.x/2,z,y*tile_size-map_area.y/2))
-				unit_new.set_scale(Vector3(obj_scale,obj_scale,obj_scale))
-				unit_new.set_rotation_degrees(Vector3(0,randi()%359,0))
-				unit_new.add_child(obj)
-				unit_new.unit_type = o
-				unit_new.z = z
+				obj.translate(Vector3(x*tile_size-map_area.x/2,z,y*tile_size-map_area.y/2))
+				obj.set_scale(Vector3(obj_scale,obj_scale,obj_scale))
+				obj.set_rotation_degrees(Vector3(0,randi()%359,0))
 				
-				if [1,11,12].find(o) != -1:
-					unit_new.selectable = true
-				
-				$objects.add_child(unit_new)
+				$tileset.add_child(obj)
 			
 			i += 1
 	
@@ -160,14 +175,16 @@ func _ready():
 		var obj = pyramid.instance()
 		var x = int(player_pos[0])
 		var y = int(player_pos[1])
+		s = float(map['heights'][y*map_size.y+x])
+		z = s*0.16
 		var unit_new = unit.instance()
 		unit_new.translate(Vector3(x*tile_size-map_area.x/2,z,y*tile_size-map_area.y/2))
 		unit_new.set_scale(Vector3(obj_scale,obj_scale,obj_scale))
 		unit_new.set_rotation_degrees(Vector3(0,randi()%359,0))
-		unit_new.unit_type = 0
+		unit_new.unit_name = "pyramid"
 		unit_new.add_child(obj)
-		unit_new.selectable = true
-		$objects.add_child(unit_new)
+		unit_new.player_id = int(player)+1
+		$units.add_child(unit_new)
 		add_child(obj)
 
 func _on_main_menu_button_down():
@@ -175,6 +192,5 @@ func _on_main_menu_button_down():
 
 
 func clear_selection():
-	for obj in $objects.get_children():
-		if obj.selectable:
-			obj.get_node("selection").set_visible(false)
+	for obj in $units.get_children():
+		obj.get_node("selection").set_visible(false)

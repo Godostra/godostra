@@ -1,0 +1,163 @@
+{
+	"faction": {
+		"starting-resources": {
+			"resource": [
+				{
+					"name": "gold",
+					"amount": "475"
+				},
+				{
+					"name": "wood",
+					"amount": "500"
+				},
+				{
+					"name": "stone",
+					"amount": "500"
+				},
+				{
+					"name": "food",
+					"amount": "50"
+				}
+			]
+		},
+		"starting-units": {
+			"unit": [
+				{
+					"name": "pyramid",
+					"amount": "1"
+				},
+				{
+					"name": "sphinx",
+					"amount": "1"
+				},
+				{
+					"name": "slave",
+					"amount": "3"
+				},
+				{
+					"name": "spearman",
+					"amount": "1"
+				},
+				{
+					"name": "spearthrower",
+					"amount": "1"
+				},
+				{
+					"name": "chicken",
+					"amount": "3"
+				},
+				{
+					"name": "priest",
+					"amount": "1"
+				}
+			]
+		},
+		"music": {
+			"value": "true",
+			"path": "music/asak-jadeflange.ogg"
+		},
+		"flat-particle-positions": {
+			"value": "true"
+		},
+		"ai-behavior": {
+			"worker-units": {
+				"unit": {
+					"name": "slave",
+					"minimum": "8"
+				}
+			},
+			"warrior-units": {
+				"unit": [
+					{
+						"name": "spearthrower",
+						"minimum": "2"
+					},
+					{
+						"name": "chicken",
+						"minimum": "6"
+					},
+					{
+						"name": "spearman",
+						"minimum": "1"
+					},
+					{
+						"name": "priest",
+						"minimum": "1"
+					},
+					{
+						"name": "mummy",
+						"minimum": "1"
+					},
+					{
+						"name": "snake",
+						"minimum": "3"
+					},
+					{
+						"name": "chicken",
+						"minimum": "16"
+					}
+				]
+			},
+			"resource-producer-units": {
+				"unit": [
+					{
+						"name": "farm",
+						"minimum": "1"
+					},
+					{
+						"name": "chicken",
+						"minimum": "50"
+					}
+				]
+			},
+			"building-units": {
+				"unit": [
+					{
+						"name": "desert_camp",
+						"minimum": "1"
+					},
+					{
+						"name": "farm",
+						"minimum": "1"
+					},
+					{
+						"name": "temple",
+						"minimum": "1"
+					},
+					{
+						"name": "obelisk",
+						"minimum": "1"
+					}
+				]
+			},
+			"upgrades": {
+				"upgrade": [
+					{
+						"name": "spear_weapons"
+					},
+					{
+						"name": "summon_scarab"
+					},
+					{
+						"name": "summon_ibis"
+					},
+					{
+						"name": "power_of_ra"
+					}
+				]
+			},
+			"static-values": {
+				"static": [
+					{
+						"type-name": "MinMinWarriorsExpandCpuUltra",
+						"value": "5"
+					},
+					{
+						"type-name": "MinMinWarriorsExpandCpuMega",
+						"value": "12"
+					}
+				]
+			}
+		}
+	}
+}

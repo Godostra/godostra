@@ -1,18 +1,33 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/unit.gd" type="Script" id=1]
 [ext_resource path="res://misc/water_simple.png" type="Texture" id=2]
 
-[sub_resource type="CubeMesh" id=4]
+[sub_resource type="CylinderMesh" id=4]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
-size = Vector3( 1, 4, 1 )
+top_radius = 1.0
+bottom_radius = 0.001
+height = 0.1
+radial_segments = 64
+rings = 4
+
+[sub_resource type="BoxShape" id=3]
+
+margin = 0.04
+extents = Vector3( 1, 1, 1 )
+
+[sub_resource type="CubeMesh" id=5]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+flip_faces = false
+size = Vector3( 2, 2, 2 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=5]
+[sub_resource type="SpatialMaterial" id=6]
 
 render_priority = 0
 flags_transparent = true
@@ -69,12 +84,7 @@ proximity_fade_enable = false
 distance_fade_mode = 0
 _sections_unfolded = [ "Albedo", "Flags" ]
 
-[sub_resource type="BoxShape" id=6]
-
-margin = 0.04
-extents = Vector3( 1, 4, 1 )
-
-[node name="Node" type="KinematicBody"]
+[node name="unit" type="KinematicBody"]
 input_ray_pickable = true
 input_capture_on_drag = false
 collision_layer = 1
@@ -87,7 +97,7 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Script" ]
 
 [node name="selection" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0 )
 visible = false
 layers = 1
 material_override = null
@@ -100,12 +110,27 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = SubResource( 4 )
 skeleton = NodePath("..")
-material/0 = SubResource( 5 )
+material/0 = null
 _sections_unfolded = [ "Transform", "material", "mesh" ]
 
 [node name="collision" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
-shape = SubResource( 6 )
+shape = SubResource( 3 )
 disabled = false
 _sections_unfolded = [ "Transform", "shape" ]
+
+[node name="cube" type="MeshInstance" parent="."]
+visible = false
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 5 )
+skeleton = NodePath("..")
+material/0 = SubResource( 6 )
+_sections_unfolded = [ "material", "mesh" ]
 
