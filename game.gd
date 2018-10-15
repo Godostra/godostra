@@ -7,8 +7,11 @@ const res_p = preload("res://misc/resources/resource.tscn")
 const gold = preload("res://data/techtrees/megapack/resources/gold/models/gold.dae")
 const stone = preload("res://data/techtrees/megapack/resources/stone/models/stone.dae")
 
-const pyramid = preload("res://data/techtrees/megapack/factions/egypt/pyramid/pyramid.dae")
 const unit = preload("res://unit.tscn")
+
+# TMP
+const pyramid = preload("res://data/techtrees/megapack/factions/egypt/units/pyramid/models/pyramid.dae")
+const pslave = preload("res://data/techtrees/megapack/factions/egypt/units/slave/models/slave.dae")
 
 var map
 var map_size = Vector2(0,0)
@@ -157,7 +160,7 @@ func _ready():
 							#mat.flags_transparent = true
 							mat.flags_unshaded = true
 							mat.params_use_alpha_scissor = true
-							mat.params_specular_mode = true
+							#mat.params_specular_mode = true
 							m.get_mesh().surface_set_material(ss,mat)
 				
 				z = s*0.16
@@ -185,6 +188,16 @@ func _ready():
 		unit_new.add_child(obj)
 		unit_new.player_id = int(player)+1
 		$units.add_child(unit_new)
+		
+		for m in obj.get_children()[0].get_children():
+			for ss in range(m.get_mesh().get_surface_count()):
+				var mat = m.get_mesh().surface_get_material(ss)
+				if mat != null:
+					#mat.flags_transparent = true
+					mat.flags_unshaded = true
+					#mat.params_use_alpha_scissor = true
+					#mat.params_specular_mode = true
+					m.get_mesh().surface_set_material(ss,mat)
 		add_child(obj)
 
 func _on_main_menu_button_down():

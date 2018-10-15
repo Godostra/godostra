@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/unit.gd" type="Script" id=1]
 [ext_resource path="res://misc/water_simple.png" type="Texture" id=2]
 
-[sub_resource type="CylinderMesh" id=4]
+[sub_resource type="CylinderMesh" id=1]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
@@ -13,12 +13,12 @@ height = 0.1
 radial_segments = 64
 rings = 4
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="BoxShape" id=2]
 
 margin = 0.04
 extents = Vector3( 1, 1, 1 )
 
-[sub_resource type="CubeMesh" id=5]
+[sub_resource type="CubeMesh" id=3]
 
 custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 flip_faces = false
@@ -27,7 +27,7 @@ subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=4]
 
 render_priority = 0
 flags_transparent = true
@@ -108,13 +108,13 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 4 )
+mesh = SubResource( 1 )
 skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "Transform", "material", "mesh" ]
 
 [node name="collision" type="CollisionShape" parent="."]
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 disabled = false
 _sections_unfolded = [ "Transform", "shape" ]
 
@@ -129,8 +129,8 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 5 )
+mesh = SubResource( 3 )
 skeleton = NodePath("..")
-material/0 = SubResource( 6 )
+material/0 = SubResource( 4 )
 _sections_unfolded = [ "material", "mesh" ]
 

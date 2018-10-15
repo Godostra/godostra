@@ -54,3 +54,15 @@ func read_json(file_path):
 	var json = parse_json(file.get_as_text())
 	file.close()
 	return json
+
+# check keys r
+func has_keys(dict,keys):
+	var have = true
+	for key in keys:
+		if dict.has(key):
+			dict = dict[key]
+		else:
+			have = false
+	if not have:
+		dict = {}
+	return dict

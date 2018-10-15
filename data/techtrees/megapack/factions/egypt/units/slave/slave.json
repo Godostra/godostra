@@ -1,0 +1,707 @@
+{
+	"unit": {
+		"parameters": {
+			"size": {
+				"value": 1
+			},
+			"height": {
+				"value": 2
+			},
+			"max-hp": {
+				"value": 600,
+				"regeneration": 1
+			},
+			"max-ep": {
+				"value": 0
+			},
+			"armor": {
+				"value": 0
+			},
+			"armor-type": {
+				"value": "leather"
+			},
+			"sight": {
+				"value": 9
+			},
+			"time": {
+				"value": 40
+			},
+			"multi-selection": {
+				"value": true
+			},
+			"cellmap": {
+				"value": false
+			},
+			"levels": {},
+			"fields": {
+				"field": {
+					"value": "land"
+				}
+			},
+			"properties": {},
+			"light": {
+				"enabled": false
+			},
+			"unit-requirements": {},
+			"upgrade-requirements": {},
+			"resource-requirements": {
+				"resource": [
+					{
+						"name": "gold",
+						"amount": 75
+					},
+					{
+						"name": "food",
+						"amount": 1
+					}
+				]
+			},
+			"resources-stored": {},
+			"image": {
+				"path": "images/worker.bmp"
+			},
+			"image-cancel": {
+				"path": "../spearman/images/tech_cancel.bmp"
+			},
+			"meeting-point": {
+				"value": "false"
+			},
+			"selection-sounds": {
+				"enabled": "true",
+				"sound": [
+					{
+						"path": "$COMMONDATAPATH/sounds/worker_select1.wav"
+					},
+					{
+						"path": "$COMMONDATAPATH/sounds/worker_select2.wav"
+					},
+					{
+						"path": "$COMMONDATAPATH/sounds/worker_select3.wav"
+					},
+					{
+						"path": "$COMMONDATAPATH/sounds/worker_select4.wav"
+					}
+				]
+			},
+			"command-sounds": {
+				"enabled": "true",
+				"sound": [
+					{
+						"path": "$COMMONDATAPATH/sounds/worker_ack1.wav"
+					},
+					{
+						"path": "$COMMONDATAPATH/sounds/worker_ack2.wav"
+					},
+					{
+						"path": "$COMMONDATAPATH/sounds/worker_ack3.wav"
+					},
+					{
+						"path": "$COMMONDATAPATH/sounds/worker_ack4.wav"
+					},
+					{
+						"path": "$COMMONDATAPATH/sounds/worker_ack5.wav"
+					},
+					{
+						"path": "$COMMONDATAPATH/sounds/worker_ack6.wav"
+					},
+					{
+						"path": "$COMMONDATAPATH/sounds/worker_ack7.wav"
+					}
+				]
+			}
+		},
+		"skills": {
+			"skill": [
+				{
+					"type": {
+						"value": "stop"
+					},
+					"name": {
+						"value": "stop_skill"
+					},
+					"ep-cost": {
+						"value": "0"
+					},
+					"speed": {
+						"value": "1000"
+					},
+					"anim-speed": {
+						"value": "55"
+					},
+					"animation": {
+						"path": "models/slave_standing.g3d"
+					},
+					"sound": {
+						"enabled": "false"
+					}
+				},
+				{
+					"type": {
+						"value": "stop"
+					},
+					"name": {
+						"value": "stop_loaded_skill"
+					},
+					"ep-cost": {
+						"value": "0"
+					},
+					"speed": {
+						"value": "75"
+					},
+					"anim-speed": {
+						"value": "70"
+					},
+					"animation": {
+						"path": "models/slave_stop_mining.g3d"
+					},
+					"sound": {
+						"enabled": "false"
+					}
+				},
+				{
+					"type": {
+						"value": "stop"
+					},
+					"name": {
+						"value": "stop_loaded_wood_skill"
+					},
+					"ep-cost": {
+						"value": "0"
+					},
+					"speed": {
+						"value": "75"
+					},
+					"anim-speed": {
+						"value": "70"
+					},
+					"animation": {
+						"path": "models/slave_stop_harvesting_wood.g3d"
+					},
+					"sound": {
+						"enabled": "false"
+					}
+				},
+				{
+					"type": {
+						"value": "move"
+					},
+					"name": {
+						"value": "move_skill"
+					},
+					"ep-cost": {
+						"value": "0"
+					},
+					"speed": {
+						"value": "190"
+					},
+					"anim-speed": {
+						"value": "130"
+					},
+					"animation": {
+						"path": "models/slave_walking.g3d"
+					},
+					"sound": {
+						"enabled": "false"
+					}
+				},
+				{
+					"type": {
+						"value": "move"
+					},
+					"name": {
+						"value": "move_wood_skill"
+					},
+					"ep-cost": {
+						"value": "0"
+					},
+					"speed": {
+						"value": "210"
+					},
+					"anim-speed": {
+						"value": "130"
+					},
+					"animation": {
+						"path": "models/slave_walking_wood.g3d"
+					},
+					"sound": {
+						"enabled": "false"
+					}
+				},
+				{
+					"type": {
+						"value": "move"
+					},
+					"name": {
+						"value": "move_gold_skill"
+					},
+					"ep-cost": {
+						"value": "0"
+					},
+					"speed": {
+						"value": "210"
+					},
+					"anim-speed": {
+						"value": "130"
+					},
+					"animation": {
+						"path": "models/slave_walking_gold.g3d"
+					},
+					"sound": {
+						"enabled": "false"
+					}
+				},
+				{
+					"type": {
+						"value": "move"
+					},
+					"name": {
+						"value": "move_loaded_skill"
+					},
+					"ep-cost": {
+						"value": "0"
+					},
+					"speed": {
+						"value": "190"
+					},
+					"anim-speed": {
+						"value": "100"
+					},
+					"animation": {
+						"path": "models/slave_walking_loaded.g3d"
+					},
+					"sound": {
+						"enabled": "false"
+					}
+				},
+				{
+					"type": {
+						"value": "move"
+					},
+					"name": {
+						"value": "move_loaded_wood_skill"
+					},
+					"ep-cost": {
+						"value": "0"
+					},
+					"speed": {
+						"value": "190"
+					},
+					"anim-speed": {
+						"value": "100"
+					},
+					"animation": {
+						"path": "models/slave_walking_loaded_wood.g3d"
+					},
+					"sound": {
+						"enabled": "false"
+					}
+				},
+				{
+					"type": {
+						"value": "build"
+					},
+					"name": {
+						"value": "build_skill"
+					},
+					"ep-cost": {
+						"value": "0"
+					},
+					"speed": {
+						"value": "105"
+					},
+					"anim-speed": {
+						"value": "100"
+					},
+					"animation": {
+						"path": "models/slave_building.g3d"
+					},
+					"sound": {
+						"enabled": "true",
+						"start-time": "0.5",
+						"sound-file": [
+							{
+								"path": "$COMMONDATAPATH/sounds/worker_build1.wav"
+							},
+							{
+								"path": "$COMMONDATAPATH/sounds/worker_build2.wav"
+							},
+							{
+								"path": "$COMMONDATAPATH/sounds/worker_build3.wav"
+							}
+						]
+					}
+				},
+				{
+					"type": {
+						"value": "harvest"
+					},
+					"name": {
+						"value": "mine_skill"
+					},
+					"ep-cost": {
+						"value": "0"
+					},
+					"speed": {
+						"value": "225"
+					},
+					"anim-speed": {
+						"value": "90"
+					},
+					"animation": {
+						"path": "models/slave_mining.g3d"
+					},
+					"sound": {
+						"enabled": "true",
+						"start-time": "0.5",
+						"sound-file": [
+							{
+								"path": "$COMMONDATAPATH/sounds/worker_mine1.wav"
+							},
+							{
+								"path": "$COMMONDATAPATH/sounds/worker_mine2.wav"
+							},
+							{
+								"path": "$COMMONDATAPATH/sounds/worker_mine3.wav"
+							},
+							{
+								"path": "$COMMONDATAPATH/sounds/worker_mine4.wav"
+							},
+							{
+								"path": "$COMMONDATAPATH/sounds/worker_mine5.wav"
+							},
+							{
+								"path": "$COMMONDATAPATH/sounds/worker_mine6.wav"
+							}
+						]
+					}
+				},
+				{
+					"type": {
+						"value": "harvest"
+					},
+					"name": {
+						"value": "harvest_wood_skill"
+					},
+					"ep-cost": {
+						"value": "0"
+					},
+					"speed": {
+						"value": "150"
+					},
+					"anim-speed": {
+						"value": "90"
+					},
+					"animation": {
+						"path": "models/slave_harvesting_wood.g3d"
+					},
+					"sound": {
+						"enabled": "true",
+						"start-time": "0.5",
+						"sound-file": [
+							{
+								"path": "$COMMONDATAPATH/sounds/worker_harvest_wood1.wav"
+							},
+							{
+								"path": "$COMMONDATAPATH/sounds/worker_harvest_wood2.wav"
+							},
+							{
+								"path": "$COMMONDATAPATH/sounds/worker_harvest_wood3.wav"
+							}
+						]
+					}
+				},
+				{
+					"type": {
+						"value": "repair"
+					},
+					"name": {
+						"value": "repair_skill"
+					},
+					"ep-cost": {
+						"value": "0"
+					},
+					"speed": {
+						"value": "40"
+					},
+					"anim-speed": {
+						"value": "100"
+					},
+					"animation": {
+						"path": "models/slave_building.g3d"
+					},
+					"sound": {
+						"enabled": "true",
+						"start-time": "0.5",
+						"sound-file": [
+							{
+								"path": "$COMMONDATAPATH/sounds/worker_build1.wav"
+							},
+							{
+								"path": "$COMMONDATAPATH/sounds/worker_build2.wav"
+							},
+							{
+								"path": "$COMMONDATAPATH/sounds/worker_build3.wav"
+							}
+						]
+					}
+				},
+				{
+					"type": {
+						"value": "die"
+					},
+					"name": {
+						"value": "die_skill"
+					},
+					"ep-cost": {
+						"value": "0"
+					},
+					"speed": {
+						"value": "90"
+					},
+					"anim-speed": {
+						"value": "50"
+					},
+					"animation": {
+						"path": "models/slave_dying.g3d"
+					},
+					"sound": {
+						"enabled": "true",
+						"start-time": "0",
+						"sound-file": [
+							{
+								"path": "$COMMONDATAPATH/sounds/worker_die1.wav"
+							},
+							{
+								"path": "$COMMONDATAPATH/sounds/worker_die2.wav"
+							},
+							{
+								"path": "$COMMONDATAPATH/sounds/worker_die3.wav"
+							}
+						]
+					},
+					"fade": {
+						"value": "false"
+					}
+				}
+			]
+		},
+		"commands": {
+			"command": [
+				{
+					"type": {
+						"value": "stop"
+					},
+					"name": {
+						"value": "stop"
+					},
+					"image": {
+						"path": "../spearman/images/tech_stop.bmp"
+					},
+					"unit-requirements": {},
+					"upgrade-requirements": {},
+					"stop-skill": {
+						"value": "stop_skill"
+					}
+				},
+				{
+					"type": {
+						"value": "move"
+					},
+					"name": {
+						"value": "move"
+					},
+					"image": {
+						"path": "../spearman/images/tech_move.bmp"
+					},
+					"unit-requirements": {},
+					"upgrade-requirements": {},
+					"move-skill": {
+						"value": "move_skill"
+					}
+				},
+				{
+					"type": {
+						"value": "build"
+					},
+					"name": {
+						"value": "build_basic"
+					},
+					"image": {
+						"path": "images/worker_build_basic.bmp"
+					},
+					"unit-requirements": {},
+					"upgrade-requirements": {},
+					"move-skill": {
+						"value": "move_skill"
+					},
+					"build-skill": {
+						"value": "build_skill"
+					},
+					"buildings": {
+						"building": [
+							{
+								"name": "farm"
+							},
+							{
+								"name": "desert_camp"
+							},
+							{
+								"name": "temple"
+							},
+							{
+								"name": "obelisk"
+							},
+							{
+								"name": "air_pyramid"
+							},
+							{
+								"name": "sphinx"
+							},
+							{
+								"name": "pyramid"
+							}
+						]
+					},
+					"start-sound": {
+						"enabled": "false"
+					},
+					"built-sound": {
+						"enabled": "true",
+						"sound-file": [
+							{
+								"path": "$COMMONDATAPATH/sounds/worker_work_end1.wav"
+							},
+							{
+								"path": "$COMMONDATAPATH/sounds/worker_work_end2.wav"
+							},
+							{
+								"path": "$COMMONDATAPATH/sounds/worker_work_end3.wav"
+							}
+						]
+					}
+				},
+				{
+					"type": {
+						"value": "repair"
+					},
+					"name": {
+						"value": "repair"
+					},
+					"image": {
+						"path": "images/worker_repair.bmp"
+					},
+					"unit-requirements": {},
+					"upgrade-requirements": {},
+					"move-skill": {
+						"value": "move_skill"
+					},
+					"repair-skill": {
+						"value": "repair_skill"
+					},
+					"repaired-units": {
+						"unit": [
+							{
+								"name": "farm"
+							},
+							{
+								"name": "desert_camp"
+							},
+							{
+								"name": "temple"
+							},
+							{
+								"name": "sphinx"
+							},
+							{
+								"name": "pyramid"
+							},
+							{
+								"name": "air_pyramid"
+							},
+							{
+								"name": "obelisk"
+							}
+						]
+					}
+				},
+				{
+					"type": {
+						"value": "harvest"
+					},
+					"name": {
+						"value": "mine"
+					},
+					"image": {
+						"path": "images/worker_mine.bmp"
+					},
+					"unit-requirements": {},
+					"upgrade-requirements": {},
+					"move-skill": {
+						"value": "move_gold_skill"
+					},
+					"harvest-skill": {
+						"value": "mine_skill"
+					},
+					"stop-loaded-skill": {
+						"value": "stop_loaded_skill"
+					},
+					"move-loaded-skill": {
+						"value": "move_loaded_skill"
+					},
+					"harvested-resources": {
+						"resource": [
+							{
+								"name": "gold"
+							},
+							{
+								"name": "stone"
+							}
+						]
+					},
+					"max-load": {
+						"value": "25"
+					},
+					"hits-per-unit": {
+						"value": "1"
+					}
+				},
+				{
+					"type": {
+						"value": "harvest"
+					},
+					"name": {
+						"value": "harvest_wood"
+					},
+					"image": {
+						"path": "images/worker_harvest_wood.bmp"
+					},
+					"unit-requirements": {},
+					"upgrade-requirements": {},
+					"move-skill": {
+						"value": "move_wood_skill"
+					},
+					"harvest-skill": {
+						"value": "harvest_wood_skill"
+					},
+					"stop-loaded-skill": {
+						"value": "stop_loaded_wood_skill"
+					},
+					"move-loaded-skill": {
+						"value": "move_loaded_wood_skill"
+					},
+					"harvested-resources": {
+						"resource": {
+							"name": "wood"
+						}
+					},
+					"max-load": {
+						"value": "20"
+					},
+					"hits-per-unit": {
+						"value": "1"
+					}
+				}
+			]
+		}
+	}
+}

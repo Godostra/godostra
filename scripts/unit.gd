@@ -1,8 +1,7 @@
 extends Spatial
 
-# TODO Seperate UNIT and TILESET in different files
-
 onready var GAME = get_node("/root/game")
+var GSC = preload("res://scripts/gsc.gd")
 
 var player_id = 0
 var unit_name = ""
@@ -16,7 +15,7 @@ var hp = 0
 
 func _ready():
 	#aab = get_node("Scene Root/Empty").get_children()[0].get_aabb()
-	unit_dir = "res://data/techtrees/"+global.techtree_name+"/factions/"+global.faction_name+"/"+unit_name
+	unit_dir = "res://data/techtrees/"+global.techtree_name+"/factions/"+global.faction_name+"/units/"+unit_name
 	
 	var file = File.new()
 	file.open(unit_dir+"/"+unit_name+".json", File.READ)
@@ -29,7 +28,7 @@ func _ready():
 	hp = def["max-hp"]["value"]
 	
 	if player_id == global.player_id:
-		for res in def["resources-stored"]["resource"]:
+		for res in GSC.has_keys(def,["resources-stored","resource"]):
 			GAME.get_node("hud/resources/res_"+res["name"]).res_max += res['amount']
 		
 
@@ -44,10 +43,10 @@ func _ready():
 	var envelope = Vector3(size-1.5,height,size-1.5)
 	var envelope_t = Vector3(0,height/2-0.5,0)
 	
-	var col = $collision.get_shape().duplicate(true)
-	col.set_extents(envelope/Vector3(2,2,2))
-	$collision.translate(envelope_t)
-	$collision.set_shape(col)
+	#var col = $collision.get_shape().duplicate(true)
+	#col.set_extents(envelope) #/Vector3(2,2,2)
+	#$collision.translate(envelope_t)
+	#$collision.set_shape(col)
 	
 	$cube.translate(envelope_t)
 	$cube.get_mesh().set_size(envelope)
@@ -65,7 +64,11 @@ func _input_event(camera, event, pos, normal, shape):
 			info += "Armor: "+str(def["armor"]["value"])+" ["+def["armor-type"]["value"]+"]\n"
 			info += "Sight: "+str(def["sight"]["value"])+"\n"
 			
-			for res in def["resources-stored"]["resource"]:
+			for res in GSC.has_keys(def,["resources-stored","resource"]):
 				info += "Store: "+str(res['amount'])+" "+res["name"]+"\n"
+			
+			for res in GSC.has_keys(def,["resource-requirements","resource"]):
+				if res["name"] == "food":
+					info += "Consumes: "+str(res["amount"])+" food \n"
 
 			GAME.get_node("hud/prop/info").set_text(info)

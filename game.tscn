@@ -13,8 +13,8 @@
 [sub_resource type="DynamicFont" id=1]
 
 size = 22
-outline_size = 0
-outline_color = Color( 1, 1, 1, 1 )
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 3 )
@@ -64,7 +64,7 @@ void fragment(){
 render_priority = 0
 shader = SubResource( 3 )
 shader_param/height_range = 5.0
-shader_param/grassres = 6.0
+shader_param/grassres = 32.0
 shader_param/rockres = 32.0
 shader_param/dirtres = 32.0
 shader_param/source = ExtResource( 7 )
