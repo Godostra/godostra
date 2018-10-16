@@ -12,7 +12,7 @@ func _ready():
 	if DEV.val("autostart_game",false):
 		get_tree().change_scene("res://loading.tscn")
 	
-	GSC.opt_add_items(cnt.get_node("Game/opt_map"),GSC.get_file_list("res://data/maps",["json"],false),global.map_name)
+	GSC.opt_add_items(cnt.get_node("Game/opt_map"),GSC.get_dir_list("res://data/maps"),global.map_name)
 	GSC.opt_add_items(cnt.get_node("Game/opt_tileset"),GSC.get_dir_list("res://data/tilesets"),global.tileset_name)
 	GSC.opt_add_items(cnt.get_node("Game/opt_techtree"),GSC.get_dir_list("res://data/techtrees"),global.techtree_name)
 	_on_opt_techtree_item_selected(0) # TODO make it from defaults

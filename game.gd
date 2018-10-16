@@ -103,6 +103,7 @@ func _ready():
 	water.load("res://data/tilesets/"+global.tileset_name+"/textures/water.png")
 	
 	$water.get_surface_material(0).set_shader_param("texturemap",water)
+	$water.set_translation(Vector3(0,map["waterLevel"]*0.16,0))
 	
 	$terrain.get_mesh().get_material().set_shader_param("source",heightmap)
 	$terrain.get_mesh().get_material().set_shader_param("splatmap",splatmap)
@@ -202,6 +203,7 @@ func _ready():
 		add_child(obj)
 
 func _on_main_menu_button_down():
+	print("A")
 	get_tree().change_scene("res://main_menu.tscn")
 
 
