@@ -57,9 +57,9 @@ func _ready():
 	
 	# Setup map data
 	
-	map = GSC.read_json("res://data/maps/"+global.map_name+".json")
+	map = GSC.read_json("res://data/maps/"+global.map_name+"/map.json")
 	
-	map_size = Vector2(int(map['width']),int(map['height']))
+	map_size = Vector2(map['width'],map['height'])
 	map_area = map_size * Vector2(tile_size,tile_size)
 	
 	
@@ -85,10 +85,10 @@ func _ready():
 	$terrain.get_mesh().set_size(map_area)
 	
 	var splatmap = ImageTexture.new()
-	splatmap.load("res://data/maps/"+global.map_name+"_splat.png")
+	splatmap.load("res://data/maps/"+global.map_name+"/splatmap.png")
 	
 	var heightmap = ImageTexture.new()
-	heightmap.load("res://data/maps/"+global.map_name+"_heightmap.png")
+	heightmap.load("res://data/maps/"+global.map_name+"/heightmap.png")
 	
 	var grass = ImageTexture.new()
 	grass.load("res://data/tilesets/"+global.tileset_name+"/textures/dirt.png")
@@ -140,9 +140,9 @@ func _ready():
 	
 	for y in range(map_size.y):
 		for x in range(map_size.x):
-			o = int(map['objects'][i])
+			o = map['resourceMap'][i]
 			if o > 0 and o != 10:
-				s = float(map['heights'][i])
+				s = int(map['heightMap'][i][0])
 				var obj
 				var rand
 				if o <= 10:
@@ -173,12 +173,12 @@ func _ready():
 			i += 1
 	
 	# Setup initial units TMP
-	for player in map['players']:
-		var player_pos = map['players'][str(player)]
+	var player_no = 1
+	for player in map['startLocations']:
 		var obj = pyramid.instance()
-		var x = int(player_pos[0])
-		var y = int(player_pos[1])
-		s = float(map['heights'][y*map_size.y+x])
+		var x = int(player[0])
+		var y = int(player[1])
+		s = int(map['heightMap'][y*map_size.y+x][0])
 		z = s*0.16
 		var unit_new = unit.instance()
 		unit_new.translate(Vector3(x*tile_size-map_area.x/2,z,y*tile_size-map_area.y/2))
@@ -186,7 +186,8 @@ func _ready():
 		unit_new.set_rotation_degrees(Vector3(0,randi()%359,0))
 		unit_new.unit_name = "pyramid"
 		unit_new.add_child(obj)
-		unit_new.player_id = int(player)+1
+		unit_new.player_id = player_no
+		player_no += 1
 		$units.add_child(unit_new)
 		
 		for m in obj.get_children()[0].get_children():

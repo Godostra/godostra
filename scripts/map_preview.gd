@@ -10,11 +10,11 @@ func _ready():
 	pass
 
 func _draw():
-	file.open("res://data/maps/"+global.map_name+".json", File.READ)
+	file.open("res://data/maps/"+global.map_name+"/map.json", File.READ)
 	var map = parse_json(file.get_as_text())
 	file.close()
 	
-	map_size = Vector2(int(map['width']),int(map['height']))
+	map_size = Vector2(map['width'],map['height'])
 	
 	if map_size.x >= 256 or map_size.y >= 256:
 		tile_size = 2
@@ -26,9 +26,9 @@ func _draw():
 	
 	for y in range(map_size.y):
 				for x in range(map_size.x):
-					var h = int(map['heights'][i])
-					var o = int(map['objects'][i])
-					var s = int(map['surfaces'][i])
+					var h = int(map['heightMap'][i][0])
+					var o = int(map['resourceMap'][i])
+					var s = int(map['surfaceMap'][i])
 					if o == 1:
 						color = "#bc460d" # tree
 					elif o == 11:

@@ -6,8 +6,8 @@
 [ext_resource path="res://data/tilesets/desert/textures/road.png" type="Texture" id=4]
 [ext_resource path="res://data/tilesets/desert/textures/grass.png" type="Texture" id=5]
 [ext_resource path="res://data/tilesets/desert/textures/dirt.png" type="Texture" id=6]
-[ext_resource path="res://data/maps/conflict_heightmap.png" type="Texture" id=7]
-[ext_resource path="res://data/maps/conflict_splat.png" type="Texture" id=8]
+[ext_resource path="res://data/maps/conflict/heightmap.png" type="Texture" id=7]
+[ext_resource path="res://data/maps/conflict/splatmap.png" type="Texture" id=8]
 [ext_resource path="res://misc/water/water.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
