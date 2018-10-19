@@ -31,25 +31,11 @@ func _ready():
 		for res in GSC.has_keys(def,["resources-stored","resource"]):
 			GAME.get_node("hud/resources/res_"+res["name"]).res_max += res['amount']
 		
+		
+	$selection.get_mesh().set_top_radius(size/2+0.5)
+	$selection.get_mesh().set_bottom_radius(size/2+0.5)
 
-	var sel = $selection.get_mesh().duplicate(true)
-	var mat = SpatialMaterial.new()
-	mat.albedo_color = Color(0,1,0)
-	sel.set_material(mat)
-	
-	$selection.get_mesh().set_top_radius(size/2+1)
-	$selection.set_mesh(sel)
-	
-	var envelope = Vector3(size-1.5,height,size-1.5)
-	var envelope_t = Vector3(0,height/2-0.5,0)
-	
-	#var col = $collision.get_shape().duplicate(true)
-	#col.set_extents(envelope) #/Vector3(2,2,2)
-	#$collision.translate(envelope_t)
-	#$collision.set_shape(col)
-	
-	$cube.translate(envelope_t)
-	$cube.get_mesh().set_size(envelope)
+	$collision.get_shape().set_extents(Vector3(size/3,height/3,size/3)) #/Vector3(2,2,2)
 
 
 func _input_event(camera, event, pos, normal, shape):

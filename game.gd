@@ -103,7 +103,7 @@ func _ready():
 	water.load("res://data/tilesets/"+global.tileset_name+"/textures/water.png")
 	
 	$water.get_surface_material(0).set_shader_param("texturemap",water)
-	$water.set_translation(Vector3(0,map["waterLevel"]*0.16,0))
+	$water.set_translation(Vector3(0,map["waterLevel"]*0.14,0))
 	
 	$terrain.get_mesh().get_material().set_shader_param("source",heightmap)
 	$terrain.get_mesh().get_material().set_shader_param("splatmap",splatmap)
@@ -180,7 +180,7 @@ func _ready():
 		var x = int(player[0])
 		var y = int(player[1])
 		s = int(map['heightMap'][y*map_size.y+x][0])
-		z = s*0.16
+		z = s*0.20
 		var unit_new = unit.instance()
 		unit_new.translate(Vector3(x*tile_size-map_area.x/2,z,y*tile_size-map_area.y/2))
 		unit_new.set_scale(Vector3(obj_scale,obj_scale,obj_scale))
