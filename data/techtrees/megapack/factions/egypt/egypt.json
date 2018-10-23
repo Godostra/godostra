@@ -27,28 +27,8 @@
 					"amount": "1"
 				},
 				{
-					"name": "sphinx",
-					"amount": "1"
-				},
-				{
 					"name": "slave",
 					"amount": "3"
-				},
-				{
-					"name": "spearman",
-					"amount": "1"
-				},
-				{
-					"name": "spearthrower",
-					"amount": "1"
-				},
-				{
-					"name": "chicken",
-					"amount": "3"
-				},
-				{
-					"name": "priest",
-					"amount": "1"
 				}
 			]
 		},

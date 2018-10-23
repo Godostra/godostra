@@ -63,7 +63,7 @@ void fragment(){
 
 render_priority = 0
 shader = SubResource( 3 )
-shader_param/height_range = 5.0
+shader_param/height_range = 10.0
 shader_param/grassres = 32.0
 shader_param/rockres = 32.0
 shader_param/dirtres = 32.0
@@ -313,7 +313,7 @@ material/0 = null
 _sections_unfolded = [ "Transform", "material", "mesh" ]
 
 [node name="water" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46, 0 )
+transform = Transform( 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 1, 0 )
 _sections_unfolded = [ "Geometry", "LOD", "Matrix", "Transform", "Visibility", "material", "mesh" ]
 
 [node name="water_simple" type="MeshInstance" parent="."]
