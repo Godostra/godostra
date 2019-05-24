@@ -5,7 +5,7 @@ func _ready():
 	pass
 
 # Get list of files
-func get_file_list(path,extensions=[],include_ext=true):
+static func get_file_list(path,extensions=[],include_ext=true):
 	var dir = Directory.new()
 	var output = []
 	if dir.open(path) == OK:
@@ -23,7 +23,7 @@ func get_file_list(path,extensions=[],include_ext=true):
 	return output
 
 # Get list of directories
-func get_dir_list(path):
+static func get_dir_list(path):
 	var dir = Directory.new()
 	var output = []
 	if dir.open(path) == OK:
@@ -37,7 +37,7 @@ func get_dir_list(path):
 	return output
 
 # Batch add items to OptionButton
-func opt_add_items(node,items,selected=""):
+static func opt_add_items(node,items,selected=""):
 	var i = 0
 	var sel_i = 0
 	for item in items:
@@ -48,7 +48,7 @@ func opt_add_items(node,items,selected=""):
 	node.select(sel_i)
 	
 # Get json
-func read_json(file_path):
+static func read_json(file_path):
 	var file = File.new()
 	file.open(file_path, File.READ)
 	var json = parse_json(file.get_as_text())
@@ -56,7 +56,7 @@ func read_json(file_path):
 	return json
 
 # check keys r
-func has_keys(dict,keys):
+static func has_keys(dict,keys):
 	var have = true
 	for key in keys:
 		if dict.has(key):
